@@ -1,7 +1,6 @@
 package com.example.springdocker.service;
 
 import com.example.springdocker.model.Person;
-import com.example.springdocker.repository.FoodRepository;
 import com.example.springdocker.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
