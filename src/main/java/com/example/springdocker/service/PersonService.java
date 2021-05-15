@@ -19,9 +19,9 @@ import java.util.List;
 public class PersonService {
 
     private final PersonRepository repository;
+
     public List<Person> getPerson() {
         return repository.findAll();
-
     }
 
     public String saveNewPerson(Person person) {
