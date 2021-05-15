@@ -21,8 +21,8 @@ public class FoodController {
     }
 
     @PostMapping("/foods")
-    public void saveNewFood(@RequestBody Food food) {
-        service.saveNewFood(food);
+    public Food saveNewFood(@RequestBody Food food) {
+        return service.saveNewFood(food);
     }
 
     @GetMapping("/foods/cookable")
