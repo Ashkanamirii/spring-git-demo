@@ -1,6 +1,7 @@
 package com.example.springdocker.repository;
 
 import com.example.springdocker.model.Food;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ class FoodRepositoryTest {
 
     @Autowired
     FoodRepository foodRepository;
+
+//    @BeforeAll  TODO implement mock here
+//    public static void beforeMethod{
+//
+//    }
 
     @DisplayName("Test findFoodByCanICookItTest(true) and in this situation false must be empty List")
     @Test
