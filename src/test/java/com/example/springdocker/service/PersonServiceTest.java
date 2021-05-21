@@ -1,7 +1,6 @@
 package com.example.springdocker.service;
 
 import com.example.springdocker.model.Person;
-import com.example.springdocker.repository.FoodRepository;
 import com.example.springdocker.repository.PersonRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
