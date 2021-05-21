@@ -1,11 +1,13 @@
 package com.example.springdocker.repository;
 
 import com.example.springdocker.model.Food;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,29 +22,31 @@ import static org.junit.jupiter.api.Assertions.*;
  * Project: spring-docker-demo
  * Copyright: MIT
  */
+//@Disabled
 @DataMongoTest
+@ExtendWith(SpringExtension.class)
 class FoodRepositoryTest {
+    List<Food> foods = new ArrayList<>();
 
     @Autowired
     FoodRepository foodRepository;
 
-//    @BeforeAll  TODO implement mock here
-//    public static void beforeMethod{
-//
-//    }
+    @BeforeEach
+    void setUp() {
+        String id = "100";
+        String name = "Kebab";
+         foods.add(new Food("10","Pizza",true,true));
+         foods.add(new Food(id,name, true, true));
+        foodRepository.saveAll(foods);
+    }
 
     @DisplayName("Test findFoodByCanICookItTest(true) and in this situation false must be empty List")
     @Test
     void findFoodByCanICookItTest() {
-        String id = "100";
-        String name = "Kebab";
-        Food f = new Food("10","Pizza",true,true);
-        Food f1 = new Food(id,name, true, true);
+        List<Food> expected = foods;
         //__________________________________________________________________________//
-        List<Food> expectedFoods = Arrays.asList(f, f1);
-        foodRepository.saveAll(expectedFoods);
         List<Food> actualFoods = foodRepository.findFoodByCanICookIt(true);
-        assertEquals(expectedFoods,actualFoods);
+        assertEquals(expected,actualFoods);
         //__________________________________________________________________________//
         List<Food> actualFoods1 = foodRepository.findFoodByCanICookIt(false);
         assertEquals(new ArrayList<>(),actualFoods1);
@@ -52,15 +56,7 @@ class FoodRepositoryTest {
     @DisplayName("Test findFoodByCanICookItTest(false)")
     @Test
     void findFoodByCanICookItTest1() {
-        String id = "100";
-        String name = "Kebab";
-        Food f = new Food("10","Pizza",true,false);
-        Food f1 = new Food(id,name, true, true);
-        //__________________________________________________________________________//
-        List<Food> foods = Arrays.asList(f,f1);
-        foodRepository.saveAll(foods);
         List<Food> expected = new ArrayList<>();
-        expected.add(f);
         //__________________________________________________________________________//
         List<Food> actual = foodRepository.findFoodByCanICookIt(false);
         assertEquals(expected,actual);
