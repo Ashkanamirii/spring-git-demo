@@ -3,6 +3,8 @@ package com.example.springdocker.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Created by Ashkan Amiri
@@ -14,7 +16,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Document(collection = "Person")
 public class Person {
+    @Id
     Long id;
     String name;
 }
