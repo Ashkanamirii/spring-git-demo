@@ -38,6 +38,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest
 
+
       - name: Upload jar
         uses: actions/upload-artifact@v2
         with:
