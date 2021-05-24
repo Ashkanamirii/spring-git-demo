@@ -3,11 +3,8 @@ name: Greeter
 
 on:
   workflow_dispatch:
-
   push:
   pull_request:
-
-
 
 jobs:
   greet:
@@ -17,6 +14,6 @@ jobs:
       - name: step 1, Greet
         run: echo hello team!
 
-
       - name: step 2
         run: echo bye bye
+
