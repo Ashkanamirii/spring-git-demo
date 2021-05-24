@@ -37,3 +37,9 @@ jobs:
           context: .
           push: true
           tag: ${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest
+
+      - name: Upload jar
+        uses: actions/upload-artifact@v2
+        with:
+            name: my-app.jar
+            path: target/*.jar
